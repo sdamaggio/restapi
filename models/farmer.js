@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const FarmerScherma = new Schema({
   name: {
     type: String,
-    required: [true, 'Mame field is required']
+    required: [true, 'Name field is required']
   },
   product: {
     type: String
