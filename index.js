@@ -1,19 +1,14 @@
-//run node index
-//browse http://localhost:4000/api
+//run node index (or nodemon index)
+//browse http://localhost:4000/api/farmers
 const express = require('express');
 
 // set up an express app
 const app = express();
 
-app.get('/api', function(req, res){
-  console.log('GET request');
-  res.send({ name: 'Yoshi'});
-});
+// initialize routes
+app.use('/api', require('./routes/api'));
 
-app.post('/api', function(req, res){
-  console.log('POST request');
-  res.send({ name: 'Yoshi'});
-});
+
 
 
 // listen for requests
