@@ -16,7 +16,11 @@ router.post('/farmers', function(req, res, next){
 
 // update a farmer in the db
 router.put('/farmers/:id', function(req, res, next){
-  res.send({ type: 'PUT'});
+  Farmer.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+    Farmer.findOne({_id: req.params.id}).then(function(farmer){
+      res.send(farmer);
+    });
+  }).catch(next);
 });
 
 // delete a farmer from the db
