@@ -21,7 +21,9 @@ router.put('/farmers/:id', function(req, res, next){
 
 // delete a farmer from the db
 router.delete('/farmers/:id', function(req, res, next){
-  res.send({ type: 'DELETE'});
+  Farmer.findByIdAndRemove({_id: req.params.id}).then(function(farmer){
+    res.send(farmer);
+  });
 });
 
 module.exports = router;
