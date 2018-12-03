@@ -4,7 +4,9 @@ const Farmer = require('../models/farmer');
 
 // get a list of farmers from the db
 router.get('/farmers', function(req, res, next){
-  res.send({ type: 'GET'});
+  Farmer.find({}).then(function(ninjas){
+    res.send(ninjas);
+  });
 });
 
 // add new farmer to the db

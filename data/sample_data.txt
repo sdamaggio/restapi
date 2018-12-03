@@ -1,0 +1,45 @@
+// post to localhost:4000/api/farmers with body: json
+
+
+
+{
+	"name" : "Jeroen",
+	"product": "la hierba madre",
+	"available": true,
+	"geometry" : { "type": "point", "coordinates" : [52.3547321, 4.8284117] }
+}
+
+{
+	"name" : "Hans",
+	"product": "Kartoffeln",
+	"available": true,
+	"geometry" : { "type": "point", "coordinates" : [50.1213475, 8.4961372] }
+}
+
+{
+	"name" : "Marco",
+	"product": "Pomodori",
+	"available": true,
+	"geometry" : { "type": "point", "coordinates" : [41.9102411, 12.3955702] }
+}
+
+{
+	"name" : "Dimitri",
+	"product": "Feta cheese",
+	"available": false,
+	"geometry" : { "type": "point", "coordinates" : [37.9908996, 23.703234] }
+}
+
+{
+	"name" : "Lucien",
+	"product": "Chardonnay grapes",
+	"available": true,
+	"geometry" : { "type": "point", "coordinates" : [48.8589506, 2.2768484] }
+}
+
+{
+	"name" : "John",
+	"product": "Corn",
+	"available": true,
+	"geometry" : { "type": "point", "coordinates" : [51.5287714, -0.2420251] }
+}
