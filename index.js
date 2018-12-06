@@ -1,5 +1,6 @@
-//run node index (or nodemon index)
-//browse http://localhost:4000/api/farmers
+// start mongodb server: sudo service mongod start
+// run: node index (or nodemon index)
+// browse http://localhost:4000/api/farmers
 /* POST example
 {
 	"name": "Steve",
@@ -20,6 +21,10 @@ const app = express();
 mongoose.connect('mongodb://localhost/farmerdata');
 mongoose.Promise = global.Promise;
 
+// set up static files
+app.use(express.static('public'));
+
+// use body-parser middleware
 app.use(bodyParser.json());
 
 
@@ -28,7 +33,7 @@ app.use('/api', require('./routes/api'));
 
 // error handling middleware
 app.use(function(err, req, res, next){
-  //console.log(err);
+  console.log(err);
   res.status(422).send({error: err.message});
 });
 

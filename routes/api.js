@@ -8,6 +8,17 @@ router.get('/farmers', function(req, res, next){
     res.send(ninjas);
   });
 });
+router.get('/ninjas', function(req, res, next){
+    Ninja.find({}).then(function(ninjas){
+        res.send(ninjas);
+    });
+    /*Ninja.geoNear(
+        {type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
+        {maxDistance: 100000, spherical: true}
+    ).then(function(ninjas){
+        res.send(ninjas);
+    }).catch(next);*/
+});
 
 // add new farmer to the db
 router.post('/farmers', function(req, res, next){
