@@ -40,8 +40,9 @@
         farmers = farmers.map(function(farmer, index){
           return(
             <li key={index}>
-              {index}
-              <span className="name">{JSON.stringify(farmer)}</span>
+              <span className={JSON.stringify(farmer.available)}></span>
+              <span className="name">{JSON.stringify(farmer.name)}</span>
+              <span className="product">{JSON.stringify(farmer.product)}</span>
             </li>
           );
         });
@@ -49,9 +50,9 @@
           <div id="farmer-container">
             <form id="search" onSubmit={this.handleSubmit}>
               <label>Enter your latitude:</label>
-              <input type="text" ref="lat" placeholder="latitude" value="debug1" required />
+              <input type="text" ref="lat" placeholder="latitude" required />
               <label>Enter your longitude:</label>
-              <input type="text" ref="lng" placeholder="longitude" value="debug2" required />
+              <input type="text" ref="lng" placeholder="longitude" required />
               <input type="submit" value="Find Farmers" />
             </form>
             <ul>{farmers}</ul>
@@ -64,10 +65,9 @@
         var lat = this.refs.lat.value;
 
         fetch('/api/farmers?lng=' + lng + '&lat=' + lat).then(function(data){
-          console.log("fetch started");
           return data.json();
-        }).then( json => {
-          console.log(json);
+        }).then(json => {
+
           this.setState({
             farmers: json
           });

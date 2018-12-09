@@ -1,24 +1,37 @@
 const express = require('express');
 const router = express.Router();
 const Farmer = require('../models/farmer');
+const _ = require('lodash');
 
 // get a list of farmers from the db
 router.get('/farmers', function(req, res, next){
-  Farmer.find({}).then(function(ninjas){
-    res.send(ninjas);
+  Farmer.find({}).then(function(farmers){
+    res.send(farmers);
   });
 });
-/*router.get('/ninjas', function(req, res, next){
-    Ninja.find({}).then(function(ninjas){
-        res.send(ninjas);
-    });*/
-    /*Ninja.geoNear(
-        {type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
-        {maxDistance: 100000, spherical: true}
-    ).then(function(ninjas){
-        res.send(ninjas);
-    }).catch(next);
-});*/
+
+
+// get a list of farmers from the db with the distance from submitted lat, lng
+/*
+router.get('/farmers', function(req, res, next){
+  console.log('GET /farmers', req.query);
+
+  var lat = parseFloat(req.query.lat);
+  var lng = parseFloat(req.query.lng);
+  var options = { near: [lng,lat], maxDistance: 100000};
+
+  if (!_.isNumber(lat) || ! _.isNumber(lng)) {
+    return res.status(409).send('MalformedInput');
+  }
+  Farmer.geoSearch(
+    {type: 'Point'}, options, function(err, res) {
+      console.log(res);
+    }
+  ).then(function(farmers){
+    res.send(farmers);
+  }).catch(next);
+});
+*/
 
 // add new farmer to the db
 router.post('/farmers', function(req, res, next){
